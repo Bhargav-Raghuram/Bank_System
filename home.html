@@ -4,10 +4,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="home.css">
   <script src="home.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<script src = "user.jss"></script>
+<script src = "user.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="paging.js"></script> 
+
   <link rel = "stylesheet" href = "user.css">
 <style>
 h2
@@ -47,6 +53,38 @@ h2
 p{
 margin: -6px 0px 3px;
 }  
+
+.paging-nav {
+      text-align: center;
+      padding-top: 10px;
+    }
+
+    .paging-nav a {
+      margin: auto 1px;
+      text-decoration: none;
+      display: inline-block;
+      padding: 1px 7px;
+      background: #91b9e6;
+      color: white;
+      border-radius: 3px;
+    }
+
+    .paging-nav .selected-page {
+      background: #187ed5;
+      font-weight: bold;
+    }
+
+    .paging-nav, #tableData {
+      width: 400px;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+    }
+
+    @media only screen and (max-width: 600px) {
+    body {
+        background-color: lightblue;
+      }
+    }
 </style>
 </head>
 <body class="home">
@@ -55,15 +93,15 @@ margin: -6px 0px 3px;
             <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                 <div class="logo">
                     
-                        <img src="rupee.png" alt="bank" height = "100px" width = "80px">
+                        <img src="new_bank.png" alt="bank" height = "100px" width = "80px">
                     
                 </div>
                 <div class="navi">
                     <ul>
                         <li class = "active" id = "home_nav" ><a href="#" onClick = "showhome();"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                         <li id = "prof_nav"><a href="#"onclick = "showprof();"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">My Profile</span></a></li>
-                        <li id = "fund_nav"><a href="#" onClick = "showfund();"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Fund Transfers</span></a></li>
-                        <li id = "stat_nav"><a href="#" ><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Online Statements</span></a></li>
+                        <li id = "fund_nav"><a href="#" onClick = "showfund();"><i class="fa fa-money" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Fund Transfers</span></a></li>
+                        <li id = "stat_nav"><a href="#" onClick = "showstmt();"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Online Statements</span></a></li>
                        
                     </ul>
                 </div>
@@ -90,7 +128,7 @@ margin: -6px 0px 3px;
                         <div class="col-md-5">
                             <div class="header-rightside">
                                 <ul class="list-inline header-top pull-right">
-                                    <li class="hidden-xs"><a href="index.html" class="add-project" >Sign Out</a></li>
+                                    <li ><a href="index.html" class="add-project" >Sign Out</a></li>
                                     
                                     
                                    
@@ -129,11 +167,10 @@ margin: -6px 0px 3px;
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
    
-   
+			<h1 class="page-header">Customer Profile</h1>
           <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">Customer Profile</h3>
-            </div>
+		   
+            
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center">  </div>
@@ -249,7 +286,7 @@ margin: -6px 0px 3px;
           <label class="col-lg-3 control-label">From Account</label>
           <div class="col-lg-8">
             <div class="ui-select">
-              <select id="user_time_zone" class="form-control">
+              <select id="user_time_zone" class="form-control" >
 			    <option value="">Select an account</option>
                 <option value="1">6581645871</option>
                 <option value="2">455348732441</option>
@@ -262,13 +299,13 @@ margin: -6px 0px 3px;
         <div class="form-group">
           <label class="col-md-3 control-label">Account number of the Payee</label>
           <div class="col-md-8">
-            <input class="form-control" placeholder = "Enter account number" type="text">
+            <input class="form-control" id = "acc_no" placeholder = "Enter account number" type="text">
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Amount</label>
           <div class="col-lg-8">
-            <input class="form-control" placeholder = "Enter Amount" type="text">
+            <input class="form-control" id = "amt" placeholder = "Enter Amount" type="text" >
           </div>
         </div>
         <div class="form-group">
@@ -278,8 +315,9 @@ margin: -6px 0px 3px;
           </div>
         </div>
         
-      </form>
-	  <div class="center"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Submit</button></div>
+      
+	  <div class="center"><input type = "submit" value = "submit" id = "submit" data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block"></div>
+	  </form>
 	  <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -305,7 +343,7 @@ margin: -6px 0px 3px;
               </div>
               <div class="form-group">
                 <label for="amount">Description</label>
-                <p>Bleh</p>
+                <p>(Description)</p>
               </div>
             </form>
 
@@ -323,6 +361,184 @@ margin: -6px 0px 3px;
     </div>
   </div>
 </div>
+    </div>
+  </div>
+</div>
+</div>
+<div id = "statement" style = "display:none">
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">View Account Statement</h1>
+  <div class="row">
+    <!-- left column -->
+    
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      
+      
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Account Type</label>
+          <div class="col-lg-8">
+            <div class="ui-select">
+              <select id="user_time_zone" class="form-control">
+			          <option value="">Select an account type</option>
+                <option value="1">Savings</option>
+                <option value="2">Checking</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Account number</label>
+          <div class="col-md-8">
+              <select id="user_time_zone" class="form-control">
+                <option value="">Select an account</option>
+                <option value="1">12345678901234</option>
+                <option value="2">98765432109876</option>
+              </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Select Period</label>
+          <div class="col-lg-8">
+            <p>From:<input class="form-control period" style = "margin-bottom: 2%;"type="input" id="from"></p>
+            <p>To:<input class="form-control period" type="input" id="to"></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Show transactions</label>
+          <div class="col-lg-8">
+          <p>Select the type of transaction : </p>
+            <select id="user_time_zone" class="form-control" style = "margin-bottom:2%;">
+              <option value="1">All Transactions</option>
+              <option value="2">Withdrawals</option>
+              <option value="3">Deposits</option>
+            </select>
+          <p>Per page: </p>
+            <select id="user_time_zone" class="form-control">
+              <option value="1">10</option>
+              <option value="2">20</option>
+              <option value="3">30</option>
+              <option value="4">40</option>
+            </select>
+          </div>
+        </div>
+        <div class="center"><button class="btn btn-primary center-block" onClick = "showstmt1();">Submit</button></div>
+      </form>
+	  <br/>
+	  <div id = "stat_table" style = "display: none">
+	  <h1 class="page-header">Statment Details</h1>
+	  <table id="tableData" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Transaction&nbsp;ID</th>
+        <th>Transaction&nbsp;type</th>
+        <th>Amount</th>
+        <th>Closing&nbsp;Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Frank</td>
+        <td>Shoulder</td>
+        <td>1246</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>John</td>
+        <td>Jameson</td>
+        <td>4564</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Philip</td>
+        <td>Jenkins</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Maria</td>
+        <td>Carlston</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Julia</td>
+        <td>Tampelton</td>
+        <td>1246</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Jane</td>
+        <td>Conor</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Susan</td>
+        <td>Crane</td>
+        <td>1246</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Lucas</td>
+        <td>Fenric</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Mark</td>
+        <td>Fenric</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Hilde</td>
+        <td>Mayer</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>John</td>
+        <td>Tron</td>
+        <td>1246</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Hans</td>
+        <td>Stark</td>
+        <td>4564</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+	  </div>
     </div>
   </div>
 </div>
@@ -350,9 +566,13 @@ function showprof() {
 	var prof = document.getElementById('myprof');
 	prof.style.display = 'block';
 	
+	var stmt = document.getElementById('statement');
+	stmt.style.display = 'none';
+	
 	document.getElementById("prof_nav").className = "active";
 	document.getElementById("home_nav").className = "";
 	document.getElementById("fund_nav").className = "";
+	document.getElementById("stat_nav").className = "";
 	
 }
 function showhome() {
@@ -366,9 +586,13 @@ function showhome() {
 	var fund = document.getElementById('fund');
 	fund.style.display = 'none';
 	
+	var stmt = document.getElementById('statement');
+	stmt.style.display = 'none';
+	
 	document.getElementById("prof_nav").className = "";
 	document.getElementById("home_nav").className = "active";
 	document.getElementById("fund_nav").className = "";
+	document.getElementById("stat_nav").className = "";
 	
 }
 function showfund() {
@@ -382,12 +606,70 @@ function showfund() {
 	var fund = document.getElementById('fund');
 	fund.style.display = 'block';
 	
+	var stmt = document.getElementById('statement');
+	stmt.style.display = 'none';
+	
 	document.getElementById("prof_nav").className = "";
 	document.getElementById("home_nav").className = "";
 	document.getElementById("fund_nav").className = "active";
+	document.getElementById("stat_nav").className = "";
 }
 
+
+function showstmt() {
+
+    var home = document.getElementById('home');
+    home.style.display = 'none';
+	
+	var prof = document.getElementById('myprof');
+    prof.style.display = 'none';
+    
+	var fund = document.getElementById('fund');
+	fund.style.display = 'none';
+	
+	var stmt = document.getElementById('statement');
+	stmt.style.display = 'block';
+	
+	document.getElementById('stat_table').style.display = 'none';
+	
+	document.getElementById("prof_nav").className = "";
+	document.getElementById("home_nav").className = "";
+	document.getElementById("stat_nav").className = "active";
+	document.getElementById("fund_nav").className = "";
+}
+function showstmt1()
+{
+	document.getElementById('stat_table').style.display = 'block';
+}
+
+    
+   
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('#tableData').paging({limit:10});
+    });
+  </script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+	
+
+
+
 
 
 </html>
