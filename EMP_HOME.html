@@ -35,9 +35,9 @@
 		
  
   
-  <script src="home.js"></script>
+<!-- <script src="home.js"></script>
 
-<script src = "user.js"></script>
+<script src = "user.js"></script>-->
 	  
  
   
@@ -136,10 +136,10 @@ margin: -6px 0px 3px;
                     <ul>
                         <li class = "active" id = "home_nav" ><a href="#" onClick = "showhome();"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Register a Customer</span></a></li>
                        <!-- <li id = "prof_nav"><a href="#"onclick = "showprof();"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Register a customer</span></a></li>-->
-                        <li id = "fund_nav"><a href="#" onClick = "showfund();"><i class="fa fa-user-plus" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add an account</span></a></li>
-                        <li id = "stat_nav"><a href="#" onClick = "showstmt();"><i class="fa fa-edit" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Modify customer details</span></a></li>
-						<li id = "stat_nav"><a href="#" onClick = "showacc();"><i class="fa fa-times" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Close an account </span></a></li>
-						<li id = "stat_nav"><a href="#" onClick = "showstmt();"><i class="fa fa-user-times" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Delete customer</span></a></li>
+                        <li id = "add_nav"><a href="#" onClick = "showadd();"><i class="fa fa-user-plus" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add an account</span></a></li>
+                        <li id = "mod_nav"><a href="#" onClick = "showmody();"><i class="fa fa-edit" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Modify customer details</span></a></li>
+						<li id = "close_nav"><a href="#" onClick = "showacc();"><i class="fa fa-times" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Close an account </span></a></li>
+						<li id = "del_nav"><a href="#" onClick = "showdel();"><i class="fa fa-user-times" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Delete customer</span></a></li>
                        
                     </ul>
                 </div>
@@ -173,6 +173,7 @@ margin: -6px 0px 3px;
                         </div>
                     </header>
                 </div>
+				
                 <div id = "home">
                     <div class="container" style="padding-top: 60px;">
   <h1 class="page-header">Registration</h1>
@@ -297,45 +298,36 @@ margin: -6px 0px 3px;
       </form>
 	  	  <div class="modal" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="false">
   <div class="modal-dialog">
-    <!--<div class="modal-content">-->
-        <!--<div class="modal-header">
+    <div class="modal-content">
+        <div class="modal-header">
             
             <h3 class="modal-title" id="lineModalLabel">Confirmation</h3>
-        </div> -->
+        </div> 
         <div class="modal-body">
             
             <!-- content goes here -->
             <form>
-			 <div class="col-sm-6 col-md-6">
-            <div class="alert alert-info" style = "height: 21%;width:160%;">
-                <button type="button" class="close" aria-hidden="false"  data-dismiss="modal" role = "button" style = "color:black;">
-                    ×</button>
-                <span class="glyphicon glyphicon-ok"></span> <strong>Success Message</strong>
-                <hr class="message-inner-separator">
-                <p>
-                    Customer added successfully!</p>
-            </div>
-        </div>
-             <!--<div class="form-group">
+			
+             <div class="form-group">
                 
                 <p align = "center" style = "font-size: 20px; font-weight: bold; vertical-align: center;"> Customer registered succesfully </p>
 				                <p align = "center" style = " color: green;font-size: 20px; font-weight: bold; "> CID </p>
-								<p align = "center" style = "font-size: 20px; font-weight: bold;"> Add an account for the customer by going to Add account page through the Navigation Bar </p>
+								<p align = "center" style = "font-size: 20px; font-weight: bold;"> Add an account for the customer by going to the Add account page through the Navigation Bar </p>
 								
                 
              
             </form>
 
-        </div>-->
-       <!--<div class="modal-footer">
+        </div>
+       <div class="modal-footer">
             <div class="btn-group btn-group-justified" role="group" aria-label="group button">
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
                 </div>
                 
             </div>
-        </div>-->
-    <!--</div>-->
+        </div>
+    </div>
   </div>
 </div>
     </div>
@@ -406,7 +398,7 @@ margin: -6px 0px 3px;
                 <span class="glyphicon glyphicon-ok"></span> <strong>Success Message</strong>
                 <hr class="message-inner-separator">
                 <p>
-                    Customer added successfully!</p>
+                    Account Added successfully!</p>
             </div>
         </div>
 		</form>
@@ -429,106 +421,8 @@ margin: -6px 0px 3px;
       </div>
             
 			<div id = "fund" style = "display:none;">
-			<div class="container" style="padding-top: 60px;">
-  <h1 class="page-header">Fund Transfer Details</h1>
-  <div class="row">
-    <!-- left column -->
-    
-    <!-- edit form column -->
-    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-      
-      
-      <form class="form-horizontal" role="form">
-        
-       
-       
-
-        <div class="form-group">
-          <label class="col-lg-3 control-label">From Account</label>
-          <div class="col-lg-8">
-            <div class="ui-select">
-              <select id="user_time_zone" class="form-control" >
-			    <option value="">Select an account</option>
-                <option value="1">6581645871</option>
-                <option value="2">455348732441</option>
-                <option value="3">675134632492752</option>
-                
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Account number of the Payee</label>
-          <div class="col-md-8">
-            <input class="form-control" id = "acc_no" placeholder = "Enter account number" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Amount</label>
-          <div class="col-lg-8">
-            <input class="form-control" id = "amt" placeholder = "Enter Amount" type="text" >
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Description</label>
-          <div class="col-lg-8">
-            <input class="form-control" placeholder="(Optional)" type="text">
-          </div>
-        </div>
-        
-      
-	  <div class="center"><input type = "submit" value = "submit" id = "submit" data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block"></div>
-	  </form>
-	  <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            <h3 class="modal-title" id="lineModalLabel">Confirmation</h3>
-        </div>
-        <div class="modal-body">
-            
-            <!-- content goes here -->
-            <form>
-              <div class="form-group">
-                <label for="from_account">From Account</label>
-                <p>A/c number here</p>
-              </div>
-              <div class="form-group">
-                <label for="to_account">To Account</label>
-                <p>A/c number here</p>
-              </div>
-              <div class="form-group">
-                <label for="amount">Amount</label>
-                <p>Amount here</p>
-              </div>
-              <div class="form-group">
-                <label for="amount">Description</label>
-                <p>(Description)</p>
-              </div>
-            </form>
-
-        </div>
-        <div class="modal-footer">
-            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Confirm</button>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-</div>
-</div>
-<div id = "statement" style = "display:none">
-<div class="container" style="padding-top: 60px;">
-  <h1 class="page-header">Modify Details</h1>
+		<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Add an Account</h1>
   <div class="row">
 		
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -536,12 +430,88 @@ margin: -6px 0px 3px;
 			<input name="search_param" value="all" id="search_param" type="hidden">         
 			<input class="form-control" name="x" id = "SSN" placeholder="Enter Customer ID" type="text">
 			<span class="input-group-btn">
-				<button class="btn btn-primary" type="button" onClick = "showmod();">Submit</button>
+				<button class="btn btn-primary" type="button" onClick = "showsec();">Submit</button>
 			</span>
 		</div>
         </div>
 		<br/>
 		<div id = "mod" style = "display:none">
+		<div class="container" style="padding-top: 60px;">
+		<h1 class="page-header">Account Type</h1>
+		 <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">From Account <span style="color: red;">*</span></label>
+          <div class="col-lg-8">
+            <div class="ui-select">
+              <select id="user_time_zone" class="form-control">
+			    <option value="">Select an account</option>
+                <option value="1">Savings</option>
+                <option value="2">Checkings</option>
+                <option value="3">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        
+           <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input class="btn btn-primary" value="Register" type="button" data-toggle="modal" data-target="#squarespaceModal1">
+            
+          </div>
+        </div>
+      </form>
+	  
+	   	  <div class="modal" id="squarespaceModal1" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="false">
+  <div class="modal-dialog">
+   
+        <div class="modal-body">
+            
+            <!-- content goes here -->
+            <form>
+			 <div class="col-sm-6 col-md-6">
+            <div class="alert alert-info" style = "height: 21%;width:160%;">
+                <button type="button" class="close" aria-hidden="false"  data-dismiss="modal" role = "button" style = "color:black;">
+                    x</button>
+                <span class="glyphicon glyphicon-ok"></span> <strong>Success Message</strong>
+                <hr class="message-inner-separator">
+                <p>
+                    Account added successfully!</p>
+            </div>
+        </div>
+           
+       
+  </div>
+</div>
+    </div>
+
+	  
+	
+	  </div>
+	  </div>
+		
+	</div>
+</div>
+</div>
+<div id = "statement" style = "display:none">
+<div class="container" style="padding-top: 60px;">
+  
+  <div class="row">
+  <h1 class="page-header">Modify Details</h1>
+  <div class = "row">
+		
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="input-group buscador-principal">    					
+			<input name="search_param" value="all" id="search_param" type="hidden">         
+			<input class="form-control" name="x" id = "SSN" placeholder="Enter Customer ID" type="text">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" type="button" onClick = "showsec();">Submit</button>
+			</span>
+		</div>
+        </div>
+		<br/>
+		<div id = "sec" style = "display:none">
 		<div class="container" style="padding-top: 60px;">
 		<h1 class="page-header">Security Questions</h1>
 		 <form class="form-horizontal" role="form">
@@ -558,6 +528,7 @@ margin: -6px 0px 3px;
             <input class="form-control" placeholder = "Answer to the question"  type="text">
           </div>
         </div>
+		
              <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
@@ -566,7 +537,6 @@ margin: -6px 0px 3px;
           </div>
         </div>
       </form>
-
 	  
 	  <div id = "tab" style = "display:none">
 	  <div class="container" style="padding-top: 60px;">
@@ -585,7 +555,7 @@ margin: -6px 0px 3px;
 	  </div>
 	  </div>
 	  </div>
-		
+	</div>	
 	</div>
 </div>
 </div>
@@ -602,12 +572,12 @@ margin: -6px 0px 3px;
 			<input name="search_param" value="all" id="search_param" type="hidden">         
 			<input class="form-control" name="x" id = "SSN" placeholder="Enter Customer ID" type="text">
 			<span class="input-group-btn">
-				<button class="btn btn-primary" type="button" onClick = "showmod1();">Submit</button>
+				<button class="btn btn-primary" type="button" onClick = "showsec1();">Submit</button>
 			</span>
 		</div>
         </div>
 		<br/>
-		<div id = "mod1" style = "display:none">
+		<div id = "sec1" style = "display:none">
 		<div class="container" style="padding-top: 60px;">
 		<h1 class="page-header">Security Questions</h1>
 		 <form class="form-horizontal" role="form">
@@ -624,6 +594,7 @@ margin: -6px 0px 3px;
             <input class="form-control" placeholder = "Answer to the question"  type="text">
           </div>
         </div>
+		
              <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
@@ -632,6 +603,7 @@ margin: -6px 0px 3px;
           </div>
         </div>
       </form>
+	  
 	  <div id = "tab1" style = "display:none;">
 <div class="container" style="padding-top: 60px;">
 	<div class="row">
@@ -720,7 +692,9 @@ $(document).ready(function(){
 
     </div>
 
-
+</div>
+</div>
+</div>
 
    
 
@@ -765,7 +739,7 @@ function showhome() {
 	document.getElementById("stat_nav").className = "";
 	
 }
-function showfund() {
+function showadd() {
 
     var home = document.getElementById('home');
     home.style.display = 'none';
@@ -779,10 +753,11 @@ function showfund() {
 	var stmt = document.getElementById('statement');
 	stmt.style.display = 'none';
 	
-	document.getElementById("prof_nav").className = "";
+	document.getElementById("mod_nav").className = "";
 	document.getElementById("home_nav").className = "";
-	document.getElementById("fund_nav").className = "active";
-	document.getElementById("stat_nav").className = "";
+	document.getElementById("add_nav").className = "active";
+	document.getElementById("del_nav").className = "";
+	document.getElementById("close_nav").className = "";
 }
 
 function showacc() {
@@ -809,7 +784,7 @@ function showacc() {
 }
 
 
-function showstmt() {
+function showmody() {
 
     var home = document.getElementById('home');
     home.style.display = 'none';
@@ -825,29 +800,40 @@ function showstmt() {
 	
 	//document.getElementById('stat_table').style.display = 'none';
 	
-	document.getElementById("prof_nav").className = "";
+	document.getElementById("mod_nav").className = "active";
 	document.getElementById("home_nav").className = "";
-	document.getElementById("stat_nav").className = "active";
-	document.getElementById("fund_nav").className = "";
+	document.getElementById("add_nav").className = "";
+	document.getElementById("del_nav").className = "";
+	document.getElementById("close_nav").className = "";
 }
 function showstmt1()
 {
 	document.getElementById('stat_table').style.display = 'block';
 }
 
-function showmod()
+function showsec()
 {
-var mody = document.getElementById('mod');
-    mody.style.display = 'block';
+var mod = document.getElementById('sec');
+    mod.style.display = 'block';
     
  }
 
-function showmod1()
+function showsec1()
 {
-var mody = document.getElementById('mod1');
+var mody = document.getElementById('sec1');
     mody.style.display = 'block';
     
  } 
+ 
+ function showdet()
+{
+var mody = document.getElementById('tab');
+    mody.style.display = 'block';
+    
+ } 
+
+    
+ 
 </script>
 
 
