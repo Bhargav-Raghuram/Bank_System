@@ -54,6 +54,15 @@ p{
 margin: -6px 0px 3px;
 }  
 
+.req_fields {
+	color: red;
+	margin-bottom: 2%;
+}
+
+.radio-buttons {
+	padding-left: 29%;
+}
+
 .paging-nav {
       text-align: center;
       padding-top: 10px;
@@ -281,7 +290,35 @@ margin: -6px 0px 3px;
           <label class="col-lg-3 control-label">From Account <span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <div class="ui-select">
-              <select id="user_time_zone" class="form-control">
+              <select id="from-acc" class="form-control">
+			    <option value="null">Select an account</option>
+                <option value="1">6581645871</option>
+                <option value="2">455348732441</option>
+                <option value="3">675134632492752</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group radio-buttons">
+  			<input type="radio" name="acc" value="other-acc" checked> Transfer to other account<br>
+        	<input type="radio" name="acc" value="within-acc"> Transfer within accounts<br>
+        </div>
+
+
+        <div class="form-group" id="otherAcc">
+          <label class="col-md-3 control-label">Account number of the Payee <span style="color: red;">*</span></label>
+          <div class="col-md-8">
+            <input class="form-control" id = "acc_no1" placeholder = "Enter account number" type="text" maxlength="12" onkeypress="return isNumber(event)">
+          </div>
+        </div>
+
+
+        <div class="form-group" id="sameAcc" style="display: none;">
+          <label class="col-lg-3 control-label">Account number of the Payee <span style="color: red;">*</span></label>
+          <div class="col-lg-8">
+            <div class="ui-select">
+              <select id="same-acc-nums" class="form-control">
 			    <option value="">Select an account</option>
                 <option value="1">6581645871</option>
                 <option value="2">455348732441</option>
@@ -290,12 +327,29 @@ margin: -6px 0px 3px;
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Account number of the Payee <span style="color: red;">*</span></label>
-          <div class="col-md-8">
-            <input class="form-control" id = "acc_no" placeholder = "Enter account number" type="text" maxlength="12" onkeypress="return isNumber(event)">
-          </div>
-        </div>
+
+		<script type='text/javascript'>
+			jQuery(document).ready(function(){
+				$('input:radio[name="acc"]').change(function(){
+					if($(this).val() == 'other-acc'){
+						document.getElementById('sameAcc').style.display = 'none';
+						document.getElementById('otherAcc').style.display = 'block';
+					}
+					if($(this).val() == 'within-acc'){
+						document.getElementById('sameAcc').style.display = 'block';
+						document.getElementById('otherAcc').style.display = 'none';
+					}
+				});
+			});
+
+			jQuery(document).ready(function(){
+				$('#from-acc').change(function(){
+					var opt= $(this).val();
+					$("#sameAcc option[value="+ opt +"]").hide();
+				});
+			});
+		</script>
+
         <div class="form-group">
           <label class="col-lg-3 control-label">Amount <span style="color: red;">*</span></label>
           <div class="col-lg-8">
@@ -322,9 +376,10 @@ margin: -6px 0px 3px;
 			$("#submit").attr('disabled', 'disabled');
 
 			var fromAcc = $("#user_time_zone").val();
-			var toAcc = $("#acc_no").val();
+			var toAcc = $("#acc_no1").val();
+			var sameAccount = $("#same-acc-nums").val();
 			var amount = $("#amt").val();
-			if (!(fromAcc == "" || toAcc == "" || amount == "")) {
+			if (!(fromAcc == "" || (toAcc == "" && sameAccount == "") || amount == "")) {
 
 				$("#submit").removeAttr('disabled');
 				$("#submit").css({
@@ -726,10 +781,10 @@ function showstmt1()
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-      $('#tableData').paging({limit:10});
-    });
-  </script>
+  $(document).ready(function() {
+    $('#tableData').paging({limit:10});
+  });
+</script>
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
