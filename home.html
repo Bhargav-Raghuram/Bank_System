@@ -549,14 +549,14 @@ margin: -6px 0px 3px;
     		});
     	});
 
-    		$(function() {
+    		  $(function() {
     	        $("#from").datepicker();
     	        $("#to").datepicker();
     	     });
     </script>
 
 	  <br/>
-	  <div id = "stat_table" style = "display: none">
+	  <div id = "stat_table" style = "display: none;">
 	  <h1 class="page-header">Statment Details</h1>
 	  <table id="tableData" class="table table-bordered table-striped">
     <thead>
@@ -635,7 +635,7 @@ margin: -6px 0px 3px;
         <td></td>
       </tr>
       <tr>
-        <td>8</td>
+        <td>9</td>
         <td>Mark</td>
         <td>Fenric</td>
         <td>4456</td>
@@ -643,7 +643,7 @@ margin: -6px 0px 3px;
         <td></td>
       </tr>
       <tr>
-        <td>9</td>
+        <td>10</td>
         <td>Hilde</td>
         <td>Mayer</td>
         <td>4456</td>
@@ -651,7 +651,7 @@ margin: -6px 0px 3px;
         <td></td>
       </tr>
       <tr>
-        <td>10</td>
+        <td>11</td>
         <td>John</td>
         <td>Tron</td>
         <td>1246</td>
@@ -659,7 +659,7 @@ margin: -6px 0px 3px;
         <td></td>
       </tr>
       <tr>
-        <td>11</td>
+        <td>12</td>
         <td>Hans</td>
         <td>Stark</td>
         <td>4564</td>
@@ -778,8 +778,11 @@ function showstmt1()
 
 <script type="text/javascript">
   $(document).ready(function() {
-  	var limit = $("#trans_per_page").val();
-    $("#tableData").paging({limit:10});
+    $("#view_submit").on('click',function(){
+    	var limit = $("#trans_per_page").val();
+  		console.log(limit);
+    	$("#tableData").paging({limit:limit});
+    });
   });
 </script>
   
