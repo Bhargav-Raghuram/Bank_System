@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+        <h3 class="text-center">Reset Password</h3>
+        <hr/>
+        <form>
+            <div class="form-group">
+                <label>Enter Customer Id :</label>
+                <input type="text" class="form-control" id="email" maxlength="8" onkeypress="return isNumber(event)" />
+            </div>
+            <div class="form-group">
+                <label>New Password :</label>
+                <input type="password" class="form-control" id="change" />
+            </div>
+            <div class="form-group">
+                <label>Confirm New Password :</label>
+                <input type="password" class="form-control" id="confirm" />
+            </div>
+            
+            <h1 class="page-header">Security Questions</h1>
+            <div class="form-group">
+              <label>Security Question 1 :</label>
+              <input class="form-control" placeholder = "Answer to the question"  type="text" id="ques1"/>
+            </div>
+            <div class="form-group">
+              <label>Security Question 2 :</label>
+              <input class="form-control" placeholder = "Answer to the question"  type="text" id="ques2"/>
+            </div>
+            <button class="btn btn-primary btn-lg center-block" id="submit">
+                Submit
+            </button>
+        </form>
+        <script type="text/javascript">
+          $(document).ready(function() {
+          $("#submit").attr('disabled', 'disabled');
+          $("form").change(function() {
+
+            $("#submit").attr('disabled', 'disabled');
+
+            var email = $("#email").val();
+            var otp = $("#otp").val();
+            var chg = $("#change").val();
+            var conf = $("#confirm").val();
+            var q1 = $("#ques1").val();
+            var q2 = $("#ques2").val();
+            if (!(email == "" || otp == "" || chg == "" || conf == "" || q1 == "" || q2 == "")) {
+              $("#submit").removeAttr('disabled');
+              $("#submit").css({
+                "cursor": "pointer",
+                "box-shadow": "1px 0px 6px #333"
+              });
+            }
+          });
+          
+          $("#submit").click(function() {
+            $("#submit").css({
+              "cursor": "default",
+              "box-shadow": "none"
+            });
+          });
+        });
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+        </script>
+    </div>
+  </div>
+</div>
+
+<div id = "sec">
+  <div class="container" style="padding-top: 60px;">
+  
+   <form class="form-horizontal" role="form">
+      
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
+
+
