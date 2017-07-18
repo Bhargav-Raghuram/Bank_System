@@ -111,7 +111,6 @@ margin: -6px 0px 3px;
                         <li id = "prof_nav"><a href="#"onclick = "showprof();"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">My Profile</span></a></li>
                         <li id = "fund_nav"><a href="#" onClick = "showfund();"><i class="fa fa-money" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Fund Transfers</span></a></li>
                         <li id = "stat_nav"><a href="#" onClick = "showstmt();"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Online Statements</span></a></li>
-                       
                     </ul>
                 </div>
             </div>
@@ -130,9 +129,6 @@ margin: -6px 0px 3px;
                                     </button>
                                 </div>
                             </nav>
-                            <div class="search hidden-xs hidden-sm">
-                                <input type="text" placeholder="Search" id="search">
-                            </div>
                         </div>
                         <div class="col-md-5">
                             <div class="header-rightside">
@@ -213,22 +209,22 @@ margin: -6px 0px 3px;
                         <td>Dembele</td>
                       </tr>
 					  
-					  <tr>
+					            <tr>
                         <td>Gender</td>
                         <td>Male</td>
                       </tr>
 					  
-					  <tr>
+					            <tr>
                         <td>Date Of Birth</td>
                         <td>09-10-1994</td>
                       </tr>
 					  
-					  <tr>
+					            <tr>
                         <td>SSN</td>
                         <td>837436453453</td>
                       </tr>
 					  
-					  <tr>
+					            <tr>
                         <td>Email ID</td>
                         <td>musa@bvb.com</td>
                       </tr>
@@ -262,27 +258,19 @@ margin: -6px 0px 3px;
                         <td>Date created</td>
                         <td>09-07-2017</td>
                       </tr>
-                 
                     </tbody>
                   </table>
-                  
-                  
                 </div>
               </div>
             </div>
-                
-            
           </div>
         </div>
       </div>
-            </div>
+    </div>
 			<div id = "fund" style = "display:none;">
 			<div class="container" style="padding-top: 60px;">
   <h1 class="page-header">Fund Transfer Details</h1>
   <div class="row">
-    <!-- left column -->
-    
-    <!-- edit form column -->
     <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
      <div class="req_fields">All fields marked with an asterisk (*) are required.</div>
       <form class="form-horizontal" role="theform" name="theform">
@@ -290,8 +278,8 @@ margin: -6px 0px 3px;
           <label class="col-lg-3 control-label">From Account <span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <div class="ui-select">
-              <select id="from-acc" class="form-control">
-			    <option value="null">Select an account</option>
+              <select id="from-acc" class="form-control" onchange="noVal()">
+			          <option value="">Select an account</option>
                 <option value="1">6581645871</option>
                 <option value="2">455348732441</option>
                 <option value="3">675134632492752</option>
@@ -301,7 +289,7 @@ margin: -6px 0px 3px;
         </div>
 
         <div class="form-group radio-buttons">
-  			<input type="radio" name="acc" value="other-acc" checked> Transfer to other customer<br>
+  			 <input type="radio" name="acc" value="other-acc" checked> Transfer to other customer<br>
         	<input type="radio" name="acc" value="within-acc"> Transfer within accounts<br>
         </div>
 
@@ -329,6 +317,11 @@ margin: -6px 0px 3px;
         </div>
 
 		<script type='text/javascript'>
+
+    function noVal() {
+      document.getElementById("same-acc-nums").value = "";
+    }
+
 			jQuery(document).ready(function(){
 				$('input:radio[name="acc"]').change(function(){
 					if($(this).val() == 'other-acc'){
@@ -343,7 +336,9 @@ margin: -6px 0px 3px;
 			});
 
 			jQuery(document).ready(function(){
+        $("select > option").show();
 				$('#from-acc').change(function(){
+          $("select > option").show();
 					var opt= $(this).val();
 					$("#sameAcc option[value="+ opt +"]").hide();
 				});
@@ -394,7 +389,6 @@ margin: -6px 0px 3px;
 				"cursor": "default",
 				"box-shadow": "none"
 			});
-			window.location.replace= "http://google.com";
 		});
 	});
 
@@ -527,41 +521,39 @@ margin: -6px 0px 3px;
       </script>
 
       <script type="text/javascript">
-		$(document).ready(function() {
-		$("#view_submit").attr('disabled', 'disabled');
-		$("form").change(function() {
-			$("#view_submit").attr('disabled', 'disabled');
+    		$(document).ready(function() {
+    		$("#view_submit").attr('disabled', 'disabled');
+    		$("form").change(function() {
+    			$("#view_submit").attr('disabled', 'disabled');
 
-			var accType = $("#acc_type").val();
-			var accNo = $("#acc_num").val();
-			var from = $("#from").val();
-			var to = $("#to").val();
+    			var accType = $("#acc_type").val();
+    			var accNo = $("#acc_num").val();
+    			var from = $("#from").val();
+    			var to = $("#to").val();
 
-			if (!(accType == "" || accNo == "" || from == "" || to == "")) {
+    			if (!(accType == "" || accNo == "" || from == "" || to == "")) {
 
-				$("#view_submit").removeAttr('disabled');
-				$("#view_submit").css({
-					"cursor": "pointer",
-					"box-shadow": "1px 0px 6px #333"
-				});
-			}
-		});
+    				$("#view_submit").removeAttr('disabled');
+    				$("#view_submit").css({
+    					"cursor": "pointer",
+    					"box-shadow": "1px 0px 6px #333"
+    				});
+    			}
+    		});
 
-		$("#view_submit").click(function() {
-			$("#view_submit").css({
-				"cursor": "default",
-				"box-shadow": "none"
-			});
-			window.location.replace= "http://google.com";
-		});
-	});
+    		$("#view_submit").click(function() {
+    			$("#view_submit").css({
+    				"cursor": "default",
+    				"box-shadow": "none"
+    			});
+    		});
+    	});
 
-		$(function() {
-	        $("#from").datepicker();
-	        $("#to").datepicker();
-	      });
-
-</script>
+    		$(function() {
+    	        $("#from").datepicker();
+    	        $("#to").datepicker();
+    	     });
+    </script>
 
 	  <br/>
 	  <div id = "stat_table" style = "display: none">
