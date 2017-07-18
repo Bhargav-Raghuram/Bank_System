@@ -413,6 +413,14 @@ margin: -6px 0px 3px;
               </select>
             </div>
           </div>
+		  
+		  <div class="form-group">
+          <label class="col-lg-3 control-label">Enter Openeing amount you wish to deposit(min $5000)*</label>
+          <div class="col-lg-8">
+            <input class="form-control" placeholder="Enter your amount" type="text">
+          </div>
+        </div>
+		  
 		  </div>
 		  
 		  
@@ -496,6 +504,13 @@ margin: -6px 0px 3px;
                 <option value="3">Other</option>
               </select>
             </div>
+          </div>
+        </div>
+		
+		<div class="form-group">
+          <label class="col-lg-3 control-label">Enter Opening amount that you wish to deposit($5000)</label>
+          <div class="col-lg-8">
+            <input class="form-control" placeholder="Please enter amount" type="text">
           </div>
         </div>
 
@@ -737,10 +752,12 @@ margin: -6px 0px 3px;
 </div>
 
 <div id = "del_cust" style = "display:none;">
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+<div class="container" style="padding-top: 60px;">
+<div class = "row">
   <h1 class="page-header">Delete a Customer</h1>
   <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <div class="input-group buscador-principal">              
         <input name="search_param" value="all" id="search_param" type="hidden">         
         <input class="form-control" name="x" id = "SSN" placeholder="Enter Customer ID" type="text">
@@ -780,88 +797,118 @@ margin: -6px 0px 3px;
 
 
 <div id = "cust_prof" style = "display: none;">
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-  <h1 class="page-header">Customer Profile</h1>
-  <div class="panel panel-info">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-3 col-lg-3 " align="center"></div>
-        <div class=" col-md-9 col-lg-9 "> 
-          <table class="table table-user-information">
-            <tbody>
-              <tr>
-                <td> <b>Personal Information: </b></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Customer ID</td>
-                <td> 16998716</td>
-              </tr>
-              <tr>
-                <td>First Name</td>
-                <td>Musa</td>
-              </tr>
-              <tr>
-                <td>Middle Name</td>
-                <td>Mustafa</td>
-              </tr>
-              <tr>
-                <td>Last Name</td>
-                <td>Dembele</td>
-              </tr>
-              <tr>
-                <td>Gender</td>
-                <td>Male</td>
-              </tr>
-              <tr>
-                <td>Date Of Birth</td>
-                <td>09-10-1994</td>
-              </tr>
-              <tr>
-                <td>SSN</td>
-                <td>837436453453</td>
-              </tr>
-              <tr>
-                <td>Email ID</td>
-                <td>musa@bvb.com</td>
-              </tr>
-              <tr>
-                <td>Phone number</td>
-                <td>8967840776 </td>
-              </tr>
-              <tr>
-                <td>Alternate Phone Number</td>
-                <td>9430250703</td>
-              </tr>
-              <tr>
-                <td>Street</td>
-                <td>3rd Main Road </td>
-              </tr>
-              <tr>
-                <td>City</td>
-                <td>Bangalore </td>
-              </tr>
-              <tr>
-                <td>State</td>
-                <td> Karnataka </td>
-              </tr>
-              <tr>
-                <td>Date created</td>
-                <td>09-07-2017</td>
-              </tr>
-            </tbody>
-          </table>
+	 <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+			<h1 class="page-header">Customer Profile</h1>
+          <div class="panel panel-info">
+		   
+            
+            <div class="panel-body">
+              <div class="row">
+                
+                
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td> <b>Personal Information: </b></td>
+                        <td></td>
+                      </tr>
+					  
+                      <tr>
+                        <td>Customer ID</td>
+                        <td> 16998716</td>
+                      </tr>
+					  
+                      <tr>
+                        <td>First Name</td>
+                        <td>Musa</td>
+                      </tr>
+					  
+                      <tr>
+                        <td>Middle Name</td>
+                        <td>Mustafa</td>
+                      </tr>
+					  
+                      <tr>
+                        <td>Last Name</td>
+                        <td>Dembele</td>
+                      </tr>
+					  
+					  <tr>
+                        <td>Gender</td>
+                        <td>Male</td>
+                      </tr>
+					  
+					  <tr>
+                        <td>Date Of Birth</td>
+                        <td>09-10-1994</td>
+                      </tr>
+					  
+					  <tr>
+                        <td>SSN</td>
+                        <td>837436453453</td>
+                      </tr>
+					  
+					  <tr>
+                        <td>Email ID</td>
+                        <td>musa@bvb.com</td>
+                      </tr>
+					  
+                       <tr>
+                        <td>Phone number</td>
+                        <td>8967840776 </td>
+                      </tr>
+                     
+                      <tr>
+                        <td>Alternate Phone Number</td>
+                        <td>9430250703</td>
+                      </tr>
+
+                      <tr>
+                        <td>Street</td>
+                        <td>3rd Main Road </td>
+                      </tr>
+                     
+                      <tr>
+                        <td>City</td>
+                        <td>Bangalore </td>
+                      </tr>
+                     
+                       <tr>
+                        <td>State</td>
+                        <td> Karnataka </td>
+                      </tr>
+                     
+                     <tr>
+                        <td>Date created</td>
+                        <td>09-07-2017</td>
+                      </tr>
+                 
+                    </tbody>
+                  </table>
+                  
+                  
+                </div>
+              </div>
+            </div>
+                
+            
+          </div>
         </div>
       </div>
-    </div>
-  </div>
   
   <div style="text-align: center;">
     <button type="button" data-toggle="modal" data-target="#delete" data-uid="2" class="delete btn btn-danger btn-lg">Delete</button>
   </div>
-</div>
-</div>
-</div>
+
+
+
 
 
 
@@ -883,7 +930,8 @@ margin: -6px 0px 3px;
     </div>
   </div>
 </div>
-
+</div>
+</div>
 </div>
 <script type = "text/javascript">
 $(document).ready(function(){
