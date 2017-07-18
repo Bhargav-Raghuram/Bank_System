@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Delete Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+</head>
+<body>
+<div class="container" style="padding-top: 60px;">
+  
+<div class = "row">
+
+<h1 class="page-header">Close an Account</h1>
+  <div class="row">
+		
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="input-group buscador-principal">    					
+			<input name="search_param" value="all" id="search_param" type="hidden">         
+			<input class="form-control" name="x" id = "SSN" placeholder="Enter Customer ID" type="text">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" type="button" onClick = "showsec1();">Submit</button>
+			</span>
+		</div>
+        </div>
+		<br/>
+		<div id = "sec1" style = "display:none">
+		<div class="container" style="padding-top: 60px;">
+		<h1 class="page-header">Security Questions</h1>
+	 <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Security Question 1</label>
+          <div class="col-lg-8">
+            <input class="form-control" placeholder = "Answer to the question"  type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Security Question 2</label>
+          <div class="col-lg-8">
+            <input class="form-control" placeholder = "Answer to the question"  type="text">
+          </div>
+        </div>
+		
+             <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+             <input type = "button" value = "Submit" class="btn btn-primary" onClick = "showtable1();">
+           
+          </div>
+        </div>
+      </form>
+	  
+	  <div id = "tab1" style = "display:none;">
+<div class="container" style="padding-top: 60px;">
+	<div class="row">
+		<table class="table table-hover table-responsive">
+		    <thead>
+		        <tr>
+		            <th>Account Type</th>
+		            <th>Account Number</th>
+		            <th>Debit Card</th>
+		            <th>Date Created</th>
+					<th>Balance</th>
+					<th>DELETE</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr id="d1">
+					<td id="f1">Savings</td>
+		            <td id="l1">12321232123</td>
+		            <td id="m1">4214563822727272</td>
+					<td id ="g1">11/03/1994</td>
+					<td id= "n1">112</td>
+		            
+		            <td><button type="button" data-toggle="modal" data-target="#delete" data-uid="1" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button></td>
+		        </tr>
+		        <tr id="d2">
+		            <td id="f1">Savings1</td>
+		            <td id="l1">12321232123</td>
+		            <td id="m1">4214563822727272</td>
+					<td id ="g1">11/03/1994</td>
+					<td id= "n1">112</td>
+		            
+		            <td><button type="button" data-toggle="modal" data-target="#delete" data-uid="2" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button></td>
+		        </tr>
+		    </tbody>
+		</table>
+	</div>
+</div>
+
+<div id="delete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to delete this account?</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="del" class="btn btn-danger" data-dismiss="modal">Delete</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+<script>
+$(document).ready(function(){
+
+   
+   $(".delete").click(function(){
+  
+      var id = $(this).data("uid");
+      $("#del").click(function(){
+          if(id==1){
+              $("#d1").html('');
+          }else if(id==2){
+              $("#d2").html('');
+          }
+      });
+   });
+   });
+   
+function showsec1()
+{
+var mody = document.getElementById('sec1');
+    mody.style.display = 'block';
+    
+ }
+ 
+ function showtable1()
+   {var form = document.getElementById('tab1');
+    
+        form.style.display = 'block';
+   }
+ 
+ </script>
+</html>

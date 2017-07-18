@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Register Customer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel = "stylesheet" href = "home.css">
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+</head>
+<body>
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Register Customer</h1>
+ <div class="row">
+		
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<div class="input-group buscador-principal">    					
+				<input name="search_param" value="all" id="search_param" type="hidden">         
+				<input class="form-control" name="x" id = "SSN" placeholder="Enter SSN Number" type="text">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button" onClick = "verify();">Verify</button>
+				</span>
+			</div>
+        </div>
+	<div id = "form" style = "display:none">
+	<div class="container" style="padding-top: 60px;">
+	<br/>
+	<h1> Your Credit Score is: <span style = "color: blue"> Credit Score</span></h1> 
+  <h1 class="page-header">Register Details</h1>
+  <div class="row">
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">First Name*</label>
+          <div class="col-lg-8">
+            <input class="form-control"  type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Middle Name</label>
+          <div class="col-lg-8">
+            <input class="form-control"  type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Last Name</label>
+          <div class="col-lg-8">
+            <input class="form-control" type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Date of Birth*</label>
+          <div class="col-lg-8">
+            <input class="form-control" placeholder= "Enter mm-dd-ccyy" type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Email*</label>
+          <div class="col-lg-8">
+            <input class="form-control" placeholder="example@example.com"  type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Phone Number*</label>
+          <div class="col-lg-8">
+            <input class="form-control" placeholder="Enter 10-digit number" type="text">
+          </div>
+        </div>
+
+         <div class="form-group">
+          <label class="col-lg-3 control-label">Alternate Phone Number</label>
+          <div class="col-lg-8">
+            <input class="form-control" placeholder="Enter 10-digit number" type="text">
+          </div>
+        </div>
+		
+		<div class="form-group">
+          <label class="col-lg-3 control-label">Security Question 1</label>
+          <div class="col-lg-8">
+            <div class="ui-select">
+              <select id="user_time_zone" class="form-control" >
+			    <option value="">Select a question</option>
+                <option value="1">What is your mother's maiden name?</option>
+                <option value="2">What is the name of your first pet?</option>
+                <option value="3">What is the name of the first school that you attended?</option>
+				<option value="3">What is the last name of your best friend?</option>
+				<option value="3">What is the name of the city that you were born in?</option>
+              </select>
+            </div>
+          </div>
+        </div>
+		
+		<div class="form-group">
+          <label class="col-lg-3 control-label">Answer*</label>
+          <div class="col-lg-8">
+            <input class="form-control" placeholder="Please type in your answer" type="text">
+          </div>
+        </div>
+		
+			<div class="form-group">
+          <label class="col-lg-3 control-label">Security Question 2</label>
+          <div class="col-lg-8">
+            <div class="ui-select">
+              <select id="user_time_zone" class="form-control" >
+			    <option value="">Select a question</option>
+                <option value="1">Which is your favourite sports team?</option>
+                <option value="2">What is your favourite holiday destination?</option>
+                <option value="3">What was the brand of your first phone?</option>
+				<option value="3">What is your favourite fruit?</option>
+				<option value="3">What was your childhood nickname?</option>
+              </select>
+            </div>
+          </div>
+        </div>
+		
+		<div class="form-group">
+          <label class="col-lg-3 control-label">Answer*</label>
+          <div class="col-lg-8">
+            <input class="form-control" placeholder="Please type in your answer" type="text">
+          </div>
+        </div>
+
+         <div class="form-group">
+          <label class="col-lg-3 control-label">Street*</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" type="text">
+          </div>
+        </div>
+
+         <div class="form-group">
+          <label class="col-lg-3 control-label">City*</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" type="text">
+          </div>
+        </div>
+
+         <div class="form-group">
+          <label class="col-lg-3 control-label">State*</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" type="text">
+          </div>
+        </div>
+
+         <div class="form-group">
+          <label class="col-lg-3 control-label">Country</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="USA" type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Gender*</label>
+          <div class="col-lg-8">
+            <input class="form-control" value="" type="text">
+            <form action="">
+              <input type="radio" name="gender" value="Male" checked> Male
+              <input type="radio" name="gender" value="Female"> Female
+              <input type="radio" name="gender" value="Other"> Others
+            </form>
+          </div>
+        </div>
+
+        
+
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input class="btn btn-primary" value="Register" type="button" data-toggle="modal" data-target="#squarespaceModal">
+            <input class="btn btn-default" value="Cancel" type="reset">
+          </div>
+        </div>
+      </form>
+	  	  <div class="modal" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            
+            <h3 class="modal-title" id="lineModalLabel">Confirmation</h3>
+        </div> 
+        <div class="modal-body">
+            
+            <!-- content goes here -->
+            <form>
+			
+             <div class="form-group">
+                
+                <p align = "center" style = "font-size: 20px; font-weight: bold; vertical-align: center;"> Customer registered succesfully </p>
+				                <p align = "center" style = " color: green;font-size: 20px; font-weight: bold; "> CID </p>
+								<p align = "center" style = "font-size: 20px; font-weight: bold;"> Add an account for the customer by going to the Add account page through the Navigation Bar </p>
+								
+                
+             
+            </form>
+
+        </div>
+       <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+    </div>
+	  
+    </div>
+  </div>
+</div>
+	</div>
+	</div>
+</div>
+
+</body>
+<script>
+	function verify()
+{	
+	var x = document.getElementById('SSN').value;
+	if(x<10)
+	 var form = document.getElementById('form');
+    
+        form.style.display = 'block';
+}
+</script>
+</html>
