@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>View Statment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src = "paging.js"></script>
+	<style>
+	.paging-nav {
+      text-align: center;
+      padding-top: 10px;
+    }
+
+    .paging-nav a {
+      margin: auto 1px;
+      text-decoration: none;
+      display: inline-block;
+      padding: 1px 7px;
+      background: #91b9e6;
+      color: white;
+      border-radius: 3px;
+    }
+
+    .paging-nav .selected-page {
+      background: #187ed5;
+      font-weight: bold;
+    }
+
+    .paging-nav, #tableData {
+      width: 400px;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+    }
+	</style>
+</head>
+<body>
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Customer Profile</h1>
+  <div class="row">
+    <!-- left column -->
+    
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      
+      <div class="req_fields">All fields marked with an asterisk (*) are required.</div>
+      <form class="form-horizontal" role="form" name="veiwForm">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Account Type <span style="color: red;">*</span></label>
+          <div class="col-lg-8">
+            <div class="ui-select">
+              <select id="acc_type" class="form-control">
+			    <option value="">Select an account type</option>
+                <option value="1">Savings</option>
+                <option value="2">Checking</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Account number <span style="color: red;">*</span></label>
+          <div class="col-md-8">
+              <select id="acc_num" class="form-control">
+                <option value="">Select an account</option>
+                <option value="1">12345678901234</option>
+                <option value="2">98765432109876</option>
+              </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Select Period <span style="color: red;">*</span></label>
+          <div class="col-lg-8">
+            <p>From:<input class="form-control period" style = "margin-bottom: 2%;" type="input" id="from"></p>
+            <p>To:<input class="form-control period" type="input" id="to"></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Show transactions</label>
+          <div class="col-lg-8">
+          <p>Select the type of transaction : </p>
+            <select id="trans_type" class="form-control" style = "margin-bottom:2%;">
+              <option value="1">All Transactions</option>
+              <option value="2">Withdrawals</option>
+              <option value="3">Deposits</option>
+            </select>
+          <p>Per page: </p>
+            <select id="trans_per_page" class="form-control" >
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+            </select>
+          </div>
+        </div>
+        <div class="center">
+        	<input type = "button" value = "submit" id = "view_submit" class="btn btn-primary center-block" onClick = "showstmt1();">
+        </div>
+      </form>
+
+      <script type="text/javascript">
+      	$(function() {
+    		$( "#from" ).datepicker({  maxDate: new Date() });
+    		$( "#to" ).datepicker({  maxDate: new Date() });
+  		});
+      </script>
+
+      <script type="text/javascript">
+    		$(document).ready(function() {
+    		$("#view_submit").attr('disabled', 'disabled');
+    		$("form").change(function() {
+    			$("#view_submit").attr('disabled', 'disabled');
+
+    			var accType = $("#acc_type").val();
+    			var accNo = $("#acc_num").val();
+    			var from = $("#from").val();
+    			var to = $("#to").val();
+
+    			if (!(accType == "" || accNo == "" || from == "" || to == "")) {
+
+    				$("#view_submit").removeAttr('disabled');
+    				$("#view_submit").css({
+    					"cursor": "pointer",
+    					"box-shadow": "1px 0px 6px #333"
+    				});
+    			}
+    		});
+
+    		$("#view_submit").click(function() {
+    			$("#view_submit").css({
+    				"cursor": "default",
+    				"box-shadow": "none"
+    			});
+    		});
+    	});
+
+    		  $(function() {
+    	        $("#from").datepicker();
+    	        $("#to").datepicker();
+    	     });
+    </script>
+
+	  <br/>
+	  <div id = "stat_table" style = "display: none;">
+	  <h1 class="page-header">Statment Details</h1>
+	  <table id="tableData" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Transaction&nbsp;ID</th>
+        <th>Transaction&nbsp;type</th>
+        <th>Amount</th>
+        <th>Closing&nbsp;Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Frank</td>
+        <td>Shoulder</td>
+        <td>1246</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>John</td>
+        <td>Jameson</td>
+        <td>4564</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Philip</td>
+        <td>Jenkins</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Maria</td>
+        <td>Carlston</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Julia</td>
+        <td>Tampelton</td>
+        <td>1246</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Jane</td>
+        <td>Conor</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Susan</td>
+        <td>Crane</td>
+        <td>1246</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Lucas</td>
+        <td>Fenric</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Mark</td>
+        <td>Fenric</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Hilde</td>
+        <td>Mayer</td>
+        <td>4456</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>John</td>
+        <td>Tron</td>
+        <td>1246</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Hans</td>
+        <td>Stark</td>
+        <td>4564</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+	  </div>
+    </div>
+  </div>
+</div>
+
+</body>
+<script type = "text/javascript">
+function showstmt1()
+{
+	document.getElementById('stat_table').style.display = 'block';
+}
+$(document).ready(function() {
+    $("#view_submit").on('click',function(){
+    	var limit = $("#trans_per_page").val();
+  		console.log(limit);
+    	$("#tableData").paging({limit:limit});
+    });
+  });
+  
+  (function($) {
+    $(function() {
+        $.widget("zpd.paging", {
+            options: {
+                limit: 5,
+                rowDisplayStyle: 'block',
+                activePage: 0,
+                rows: []
+            },
+            _create: function() {
+                var rows = $("tbody", this.element).children();
+                this.options.rows = rows;
+                this.options.rowDisplayStyle = rows.css('display');
+                var nav = this._getNavBar();
+                this.element.after(nav);
+                this.showPage(0);
+            },
+            _getNavBar: function() {
+                var rows = this.options.rows;
+                var nav = $('<div>', {class: 'paging-nav'});
+                for (var i = 0; i < Math.ceil(rows.length / this.options.limit); i++) {
+                    this._on($('<a>', {
+                        href: '#',
+                        text: (i + 1),
+                        "data-page": (i)
+                    }).appendTo(nav),
+                            {click: "pageClickHandler"});
+                }
+                //create previous link
+                this._on($('<a>', {
+                    href: '#',
+                    text: '<<',
+                    "data-direction": -1
+                }).prependTo(nav),
+                        {click: "pageStepHandler"});
+                //create next link
+                this._on($('<a>', {
+                    href: '#',
+                    text: '>>',
+                    "data-direction": +1
+                }).appendTo(nav),
+                        {click: "pageStepHandler"});
+                return nav;
+            },
+            showPage: function(pageNum) {
+                var num = pageNum * 1; //it has to be numeric
+                this.options.activePage = num;
+                var rows = this.options.rows;
+                var limit = this.options.limit;
+                for (var i = 0; i < rows.length; i++) {
+                    if (i >= limit * num && i < limit * (num + 1)) {
+                        $(rows[i]).css('display', this.options.rowDisplayStyle);
+                    } else {
+                        $(rows[i]).css('display', 'none');
+                    }
+                }
+            },
+            pageClickHandler: function(event) {
+                event.preventDefault();
+                $(event.target).siblings().attr('class', "");
+                $(event.target).attr('class', "selected-page");
+                var pageNum = $(event.target).attr('data-page');
+                this.showPage(pageNum);
+            },
+            pageStepHandler: function(event) {
+                event.preventDefault();
+                //get the direction and ensure it's numeric
+                var dir = $(event.target).attr('data-direction') * 1;
+                var pageNum = this.options.activePage + dir;
+                //if we're in limit, trigger the requested pages link
+                if (pageNum >= 0 && pageNum < this.options.rows.length) {
+                    $("a[data-page=" + pageNum + "]", $(event.target).parent()).click();
+                }
+            }
+        });
+    });
+})(jQuery)
+  </script>
+</html>
