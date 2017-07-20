@@ -27,9 +27,8 @@
  <div class="row">
 		
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			<div class="input-group buscador-principal">    					
-				<input name="search_param" value="all" id="search_param" type="hidden">         
-				<input class="form-control" name="x" id = "SSN" placeholder="Enter SSN Number" type="text" onkeypress="return isNumber(event);" maxlength="9" onchange="nullVal();">
+			<div class="input-group buscador-principal">    					        
+				<input class="form-control" name="x" id = "SSN" placeholder="Enter SSN Number" type="text" onkeypress="return isNumber(event);" maxlength="9" onkeyup="nullVal();">
 				<span class="input-group-btn">
 					<button class="btn btn-primary" type="button" onClick = "verify();">Verify</button>
 				</span>
@@ -48,6 +47,7 @@
 
         function nullVal() {
           document.getElementById('valid_ssn').innerHTML = "";
+          document.getElementById('SSN').style.borderColor = '';
         }
       </script>
         </div>
@@ -255,6 +255,7 @@
   }
   else
     document.getElementById('valid_ssn').innerHTML = "Enter a valid SSN.";
+    document.getElementById('SSN').style.borderColor = 'red';
 }
 
 
