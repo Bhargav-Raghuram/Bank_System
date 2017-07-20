@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title>Success Notification Boxes</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" media="all" href="style.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <center>
+    <div id="w">
+      <div id="content">
+        <div class="notify successbox">
+          <span class="alerticon"><img src="confirm.png" alt="checkmark" height="128" width="128" /></span>
+          <h1>Transaction Complete!</h1>
+        </div>
+      </div>
+    </div>
+  </center>
+  <script type="text/javascript">
+    var IDLE_TIMEOUT = 5; //seconds
+    var _idleSecondsTimer = null;
+    var _idleSecondsCounter = 0;
+
+    _idleSecondsTimer = window.setInterval(CheckIdleTime, 1000);
+
+    function CheckIdleTime() {
+         _idleSecondsCounter++;
+         var oPanel = document.getElementById("SecondsUntilExpire");
+         if (oPanel)
+             oPanel.innerHTML = (IDLE_TIMEOUT - _idleSecondsCounter) + "";
+        if (_idleSecondsCounter >= IDLE_TIMEOUT) {
+            window.clearInterval(_idleSecondsTimer);
+            document.location.href = "session_end.html";
+        }
+    }
+  </script>
+</body>
+</html>
