@@ -128,7 +128,7 @@ margin: -6px 0px 3px;
                     </header>
                 </div>
 				<script type="text/javascript">
-          var IDLE_TIMEOUT = 60; //seconds
+          var IDLE_TIMEOUT = 180; //seconds
           var _idleSecondsTimer = null;
           var _idleSecondsCounter = 0;
 
@@ -154,7 +154,7 @@ margin: -6px 0px 3px;
               if (_idleSecondsCounter >= IDLE_TIMEOUT) {
                   window.clearInterval(_idleSecondsTimer);
                   alert("Time expired!");
-                  document.location.href = "logout.html";
+                  document.location.href = "session_end.html";
               }
           }    
         </script>
