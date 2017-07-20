@@ -74,6 +74,7 @@ margin: -6px 0px 3px;
 </style>
  <script type="text/javascript">
  $(document).ready(function(){
+ $('#pageContent').load("Register_Customer.html");
         $("#navy li a").click(function() {
             $("#pageContent").load($(this).attr('href'));
             return false;
@@ -92,12 +93,12 @@ margin: -6px 0px 3px;
                 </div>
                 <div class="navi">
                     <ul id = "navy">
-                        <li class = "active" id = "home_nav" ><a href="#" onClick = ""><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">HOME</span></a></li>
+                        
 						<li id = "prof_nav"><a target="#" href = "Register_Customer.html"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Register Customer</span></a></li>
-                        <li id = "prof_nav"><a target="#" href = "Add_Account.html"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add an Account</span></a></li>
-                        <li id = "fund_nav"><a target="#" href = "Modify_Customer.html"><i class="fa fa-money" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Modify Customer Details</span></a></li>
-                        <li id = "stat_nav"><a target="#" href = "Delete_Account.html"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Close an Account</span></a></li>
-						<li id = "stat_nav"><a target="#" href = "Delete_Customer.html"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Delete a Customer</span></a></li>
+                        <li id = "prof_nav"><a target="#" href = "Add_Account.html"><i class="fa fa-user-plus" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add an Account</span></a></li>
+                        <li id = "fund_nav"><a target="#" href = "Modify_Customer.html"><i class="fa fa-edit" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Modify Customer Details</span></a></li>
+                        <li id = "stat_nav"><a target="#" href = "Delete_Account.html"><i class="fa fa-times" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Close an Account</span></a></li>
+						<li id = "stat_nav"><a target="#" href = "Delete_Customer.html"><i class="fa fa-user-times" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Delete a Customer</span></a></li>
                     </ul>
                 </div>
             </div>
