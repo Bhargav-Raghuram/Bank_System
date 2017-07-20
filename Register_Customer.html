@@ -13,7 +13,13 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+    <style type="text/css">
+      .validationText {
+        color : red;
+        margin-left: 2%;
+        margin-top: 1%;
+      }
+    </style>
 </head>
 <body>
 <div class="container" style="padding-top: 60px;">
@@ -23,11 +29,27 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 			<div class="input-group buscador-principal">    					
 				<input name="search_param" value="all" id="search_param" type="hidden">         
-				<input class="form-control" name="x" id = "SSN" placeholder="Enter SSN Number" type="text">
+				<input class="form-control" name="x" id = "SSN" placeholder="Enter SSN Number" type="text" onkeypress="return isNumber(event);" maxlength="9" onchange="nullVal();">
 				<span class="input-group-btn">
 					<button class="btn btn-primary" type="button" onClick = "verify();">Verify</button>
 				</span>
+        
 			</div>
+      <p id="valid_ssn" class="validationText"></p>
+      <script type="text/javascript">
+        function isNumber(evt) {
+          evt = (evt) ? evt : window.event;
+          var charCode = (evt.which) ? evt.which : evt.keyCode;
+          if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+          }
+          return true;
+        }
+
+        function nullVal() {
+          document.getElementById('valid_ssn').innerHTML = "";
+        }
+      </script>
         </div>
 	<div id = "form" style = "display:none">
 	<div class="container" style="padding-top: 60px;">
@@ -39,7 +61,7 @@
     <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
       <form class="form-horizontal" role="form">
         <div class="form-group">
-          <label class="col-lg-3 control-label">First Name*</label>
+          <label class="col-lg-3 control-label">First Name<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control"  type="text">
           </div>
@@ -53,28 +75,28 @@
         </div>
 
         <div class="form-group">
-          <label class="col-lg-3 control-label">Last Name</label>
+          <label class="col-lg-3 control-label">Last Name<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" type="text">
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-lg-3 control-label">Date of Birth*</label>
+          <label class="col-lg-3 control-label">Date of Birth<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" placeholder= "Enter mm-dd-ccyy" type="text">
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-lg-3 control-label">Email*</label>
+          <label class="col-lg-3 control-label">Email<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" placeholder="example@example.com"  type="text">
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-lg-3 control-label">Phone Number*</label>
+          <label class="col-lg-3 control-label">Phone Number<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" placeholder="Enter 10-digit number" type="text">
           </div>
@@ -104,7 +126,7 @@
         </div>
 		
 		<div class="form-group">
-          <label class="col-lg-3 control-label">Answer*</label>
+          <label class="col-lg-3 control-label">Answer<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" placeholder="Please type in your answer" type="text">
           </div>
@@ -127,42 +149,42 @@
         </div>
 		
 		<div class="form-group">
-          <label class="col-lg-3 control-label">Answer*</label>
+          <label class="col-lg-3 control-label">Answer<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" placeholder="Please type in your answer" type="text">
           </div>
         </div>
 
          <div class="form-group">
-          <label class="col-lg-3 control-label">Street*</label>
+          <label class="col-lg-3 control-label">Street<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" value="" type="text">
           </div>
         </div>
 
          <div class="form-group">
-          <label class="col-lg-3 control-label">City*</label>
+          <label class="col-lg-3 control-label">City<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" value="" type="text">
           </div>
         </div>
 
          <div class="form-group">
-          <label class="col-lg-3 control-label">State*</label>
+          <label class="col-lg-3 control-label">State<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" value="" type="text">
           </div>
         </div>
 
          <div class="form-group">
-          <label class="col-lg-3 control-label">Country</label>
+          <label class="col-lg-3 control-label">Country<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" value="USA" type="text">
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-lg-3 control-label">Gender*</label>
+          <label class="col-lg-3 control-label">Gender<span style="color: red;">*</span></label>
           <div class="col-lg-8">
             <input class="form-control" value="" type="text">
             <form action="">
@@ -200,9 +222,6 @@
                 <p align = "center" style = "font-size: 20px; font-weight: bold; vertical-align: center;"> Customer registered succesfully </p>
 				                <p align = "center" style = " color: green;font-size: 20px; font-weight: bold; "> CID </p>
 								<p align = "center" style = "font-size: 20px; font-weight: bold;"> Add an account for the customer by going to the Add account page through the Navigation Bar </p>
-								
-                
-             
             </form>
 
         </div>
@@ -211,7 +230,6 @@
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -231,10 +249,14 @@
 	function verify()
 {	
 	var x = document.getElementById('SSN').value;
-	if(x<10)
+	if(x.length == 9) {
 	 var form = document.getElementById('form');
-    
-        form.style.display = 'block';
+    form.style.display = 'block';
+  }
+  else
+    document.getElementById('valid_ssn').innerHTML = "Enter a valid SSN.";
 }
+
+
 </script>
 </html>
